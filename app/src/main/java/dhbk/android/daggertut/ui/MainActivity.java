@@ -9,13 +9,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
+import dhbk.android.daggertut.MVPApp;
 import dhbk.android.daggertut.R;
 import dhbk.android.daggertut.base.BasePresenterActivity;
+import dhbk.android.daggertut.dagger.PresenterModule;
 import dhbk.android.daggertut.ui.presenterinterfaces.MainActivityPresenter;
 import dhbk.android.daggertut.ui.viewinterfaces.MainActivityView;
 
 // TODO: 7/11/16  MainActivityPresenter là 1 interface extend interface BasePresenter
 public class MainActivity extends BasePresenterActivity<MainActivityPresenter> implements MainActivityView {
+    @Inject
+    MainActivityPresenter mMainActivityPresenter;
+
     private TextView mTextView;
     private View mButton;
 
@@ -41,21 +48,32 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter> i
     // TODO: 7/11/16 hiện thưc từ  BasePresenterActivity
     @Override
     protected MainActivityPresenter getPresenter() {
-        return null;
+        if(mMainActivityPresenter == null){
+            // do dagger stuff
+            DaggerPresenterComponent.builder()
+                    .baseComponent(MVPApp.getBaseComponent())
+                    .presenterModule(new PresenterModule())
+                    .build().inject(this);
+            mMainActivityPresenter.registerView(this);
+        }
+
+        return mMainActivityPresenter;
     }
 
     // TODO: 7/11/16 hiện thực từ MainActivityView
     @Override
     public void postTweet(String tweet) {
+        mTextView.setText(tweet);
 
     }
 
     // TODO: 7/11/16 hiện thực từ baseview
     @Override
     public String getStringById(int id) {
-        return null;
+        return getResources().getString(id);
     }
 
+    // TODO: 7/11/16 call  getRandomTweet() fromm getPresenter()
     private void initView() {
         mTextView =(TextView) findViewById(R.id.tweet_text);
         mButton = findViewById(R.id.button);
