@@ -2,6 +2,10 @@ package dhbk.android.daggertut;
 
 import android.app.Application;
 
+import dhbk.android.daggertut.dagger.AppModule;
+import dhbk.android.daggertut.dagger.BaseComponent;
+import dhbk.android.daggertut.dagger.DaggerBaseComponent;
+
 /**
  * Created by huynhducthanhphong on 7/11/16.
  */
