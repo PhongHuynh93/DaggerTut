@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import dhbk.android.daggertut.MVPApp;
+import dhbk.android.daggertut.network.OKClient;
 
 /**
  * Created by huynhducthanhphong on 7/11/16.
