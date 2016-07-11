@@ -3,9 +3,6 @@ package dhbk.android.daggertut.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,7 +10,9 @@ import javax.inject.Inject;
 
 import dhbk.android.daggertut.MVPApp;
 import dhbk.android.daggertut.R;
+import dhbk.android.daggertut.SomeActivity;
 import dhbk.android.daggertut.base.BasePresenterActivity;
+import dhbk.android.daggertut.dagger.DaggerPresenterComponent;
 import dhbk.android.daggertut.dagger.PresenterModule;
 import dhbk.android.daggertut.ui.presenterinterfaces.MainActivityPresenter;
 import dhbk.android.daggertut.ui.viewinterfaces.MainActivityView;
@@ -30,18 +29,6 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter> i
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         initView();
     }
 
