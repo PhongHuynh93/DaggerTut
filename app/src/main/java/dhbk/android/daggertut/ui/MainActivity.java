@@ -3,15 +3,18 @@ package dhbk.android.daggertut.ui;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import dhbk.android.daggertut.R;
+import dhbk.android.daggertut.base.BasePresenterActivity;
+import dhbk.android.daggertut.ui.presenterinterfaces.MainActivityPresenter;
+import dhbk.android.daggertut.ui.viewinterfaces.MainActivityView;
 
-public class MainActivity extends AppCompatActivity {
+// TODO: 7/11/16  MainActivityPresenter là 1 interface extend interface BasePresenter
+public class MainActivity extends BasePresenterActivity<MainActivityPresenter> implements MainActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
